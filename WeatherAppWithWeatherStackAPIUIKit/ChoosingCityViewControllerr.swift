@@ -17,7 +17,7 @@ class ChoosingCityViewControllerr: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Weather"
+        title = "Choose city"
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
