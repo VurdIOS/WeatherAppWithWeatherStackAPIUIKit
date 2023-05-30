@@ -21,32 +21,42 @@ class WeatherViewController: UIViewController {
     
     private let network = NetworkManager.shared
     
-
+    
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print(citiesName!)
-        network.fetchWeather(from: getURL(city: citiesName)) { [weak self] result in
+        let url = network.getURL(city: citiesName)
+        
+        network.fetchWeather(from: url) { [weak self] result in
             switch result {
             case .success(let weather):
-                self?.countryLabel.text = weather.location.country
-                self?.cityLabel.text = weather.location.name
-                self?.temperatureLabel.text = String(weather.current.temperature)
-                self?.discriptionLabel.text = weather.current.weatherDescriptions[0]
+                self?.countryLabel.text = "Country: \(weather.location.country)"
+                self?.cityLabel.text = "City: \(weather.location.name)"
+                self?.temperatureLabel.text = "Temperature: \(String(weather.current.temperature))"
+                self?.discriptionLabel.text = "Discription: \(weather.current.weatherDescriptions[0])"
             case .failure(let error):
                 DispatchQueue.main.async {
-                    self?.discriptionLabel.text = "incorrect city"
+                    self?.showAlert(withTitle: "You wrote cities name wrong", andMessage: "")
                 }
-                
                 print(error)
             }
         }
     }
     
-    private func getURL(city: String) -> URL {
-        let url = "http://api.weatherstack.com/current?access_key=c414a7f553e3b40344a3d8ff36490ac5&query=\(city)"
-        return URL(string: url)!
-    }
-    
-
 }
+
+extension WeatherViewController {
+    private func showAlert(withTitle title: String, andMessage message: String) {
+        let alert = UIAlertController(title: title,
+                                      message: message,
+                                      preferredStyle: .alert)
+        let gotItAction = UIAlertAction(title: "OK",
+                                        style: .default) {_ in
+            self.dismiss(animated: true)
+        }
+        alert.addAction(gotItAction)
+        present(alert, animated: true)
+    }
+}
+

@@ -42,5 +42,10 @@ final class NetworkManager {
             }
         }.resume()
     }
+    
+    func getURL(city: String) -> URL {
+        let url = "http://api.weatherstack.com/current?access_key=c414a7f553e3b40344a3d8ff36490ac5&query=\(city)"
+        return URL(string: url)!
+    }
 }
 
