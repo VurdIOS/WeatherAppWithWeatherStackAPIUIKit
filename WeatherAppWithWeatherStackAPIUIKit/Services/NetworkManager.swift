@@ -43,7 +43,7 @@ final class NetworkManager {
         }.resume()
     }
     
-    //hvhv
+    //
     func getURL(city: String) -> URL {
         let url = "http://api.weatherstack.com/current?access_key=d819b479ba5a4c3c7ee27df4b404ba44&query=\(city)"
         return URL(string: url)!
