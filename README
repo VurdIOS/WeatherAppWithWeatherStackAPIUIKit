@@ -3,7 +3,3 @@
 Используется APIWeather - weatherstack
 На 06.06.23 реализован простенький интерфейс для тестирвоания функционала
 API работает, получаю необходимую информацию по запросу и раскладываю ее в модель
-
-
-![Image alt](https://github.com/VurdIOS/WeatherAppWithWeatherStackAPIUIKit/blob/main/ScreenShots/0.png)
-https://github.com/VurdIOS/WeatherAppWithWeatherStackAPIUIKit/blob/main/ScreenShots/0.png
